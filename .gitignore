@@ -1,0 +1,10 @@
+# Config settings
+config.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Java class files
+*.class
