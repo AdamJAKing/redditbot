@@ -25,6 +25,7 @@ public class RedditConnector {
 	 */
 	
 	public void connect(String filePath) {
+		System.out.println("Attemping to connect to reddit...");
 		Properties props = new Properties();
 		
 		try {
@@ -45,6 +46,10 @@ public class RedditConnector {
 		CloseableHttpResponse response = HttpHandler.post("https://www.reddit.com/api/v1/access_token", props.getProperty("clientId"), 
 				props.getProperty("clientSecret"), headers, nameValuePairs);
 		
+		if(response != null) {
+			System.out.println("Connected!");
+		}
+		
 		RedditJsonParser rjp = new RedditJsonParser();
 		
 		try {
@@ -52,7 +57,6 @@ public class RedditConnector {
 			headers.put("Authorization","bearer " + parsedJson.getString("access_token"));
 			CloseableHttpResponse accessTokenResponse =  HttpHandler.get("https://oauth.reddit.com/api/v1/me", headers);
 			
-			System.out.println(EntityUtils.toString(accessTokenResponse.getEntity()));
 		} catch (ParseException | IOException | JSONException e) {
 			e.printStackTrace();
 		}
