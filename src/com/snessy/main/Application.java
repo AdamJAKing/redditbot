@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import com.snessy.auth.RedditConnector;
 import com.snessy.auth.WeatherConnector;
+import com.snessy.database.Database;
 
 public class Application {
 
@@ -22,6 +23,12 @@ public class Application {
 		RedditConnector redditConnector = new RedditConnector(props.getProperty("username"), 
 				props.getProperty("password"), props.getProperty("clientId"), props.getProperty("clientSecret"));
 		redditConnector.connect();
+		
+		Database.getInstance().setDatabaseSettings(props.getProperty("databaseUser"),
+				props.getProperty("databasePass"), props.getProperty("databaseHost"), 
+				props.getProperty("databaseName"));
+		
+		Database.getInstance().connect();
 		
 		WeatherConnector weatherConnector = new WeatherConnector();
 	}
