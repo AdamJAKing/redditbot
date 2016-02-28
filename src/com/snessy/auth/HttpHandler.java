@@ -74,8 +74,10 @@ public class HttpHandler {
 		
 		HttpGet get = new HttpGet(url);
 		
-		for(Map.Entry<String, String> entry : headers.entrySet()) {
-			get.addHeader(entry.getKey(), entry.getValue());
+		if(headers != null) {
+			for(Map.Entry<String, String> entry : headers.entrySet()) {
+				get.addHeader(entry.getKey(), entry.getValue());
+			}
 		}
 		
 		CloseableHttpResponse response = null;
