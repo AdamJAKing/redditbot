@@ -30,6 +30,6 @@ public class Application {
 		
 		Database.getInstance().connect();
 		
-		WeatherConnector weatherConnector = new WeatherConnector();
+		WeatherConnector weatherConnector = new WeatherConnector(props.getProperty("weatherAPIKey"));
 	}
 }
