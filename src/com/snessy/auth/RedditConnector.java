@@ -45,9 +45,12 @@ public class RedditConnector {
 		nameValuePairs.put("username", username);
 		nameValuePairs.put("password", password);
 		
-		CloseableHttpResponse response = HttpHandler.post("https://www.reddit.com/api/v1/accasess_token", clientId, 
+		CloseableHttpResponse response = HttpHandler.post("https://www.reddit.com/api/v1/access_token", clientId, 
 				clientSecret, headers, nameValuePairs);
 		
+		/*
+		 * If the status code is okay, try and parse the json and get user information about the account
+		 */
 		if(response.getStatusLine().getStatusCode() == 200) {
 			System.out.println("Connected!");
 		
