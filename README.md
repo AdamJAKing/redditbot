@@ -10,13 +10,11 @@ manually.
 To use this bot, you will need a reddit account and a reddit developer application. You can do this via https://www.reddit.com/prefs/apps/
 Make sure that you set the app type to "script"
 
-Change `local.config.properties` to `config.properties` this is where your reddit username, reddit password, 
-app client id and app client secret should go as well as all your database settings.
+You will need to also have an account on http://openweathermap.org/api for getting weather information
+
+Change `local.config.properties` to `config.properties` this file is where all your details go for your reddit account, reddit app, database and weather API key.
 
 ##Libs
 The project currently uses the [Apache HTTPClient](https://hc.apache.org/httpcomponents-client-ga/) libs that allow for easy 
 to use HTTP requests as well the [Java JSON](http://www.java2s.com/Code/Jar/j/Downloadjavajsonjar.htm) libs for parsing the response data and the [JDBC driver](https://dev.mysql.com/downloads/connector/j/) for SQL. 
 These are included in the repo but I plan on moving them to something like Gradle.
-
-##Weather API
-redditweatherbot gets the weather information from http://openweathermap.org/api
