@@ -10,9 +10,15 @@ import org.json.JSONObject;
 
 public class WeatherConnector {
 	
+	private String apiKey;
+
+	public WeatherConnector(String apiKey) {
+		this.apiKey = apiKey;
+	}
+
 	public JSONObject connect(String location, String country) {
 		CloseableHttpResponse response = HttpHandler.get("http://api.openweathermap.org"
-				+ "/data/2.5/weather?q="+location+","+country+"&"+ "appid=44db6a862fba0b067b1930da0d769e98", null);
+				+ "/data/2.5/weather?q="+location+","+country+"&"+ "appid="+apiKey, null);
 		try {
 			return new JSONObject(EntityUtils.toString(response.getEntity()));
 		} catch (ParseException | IOException | JSONException e) {
