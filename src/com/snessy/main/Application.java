@@ -25,8 +25,8 @@ public class Application {
 		redditConnector.connect();
 		
 		Database.getInstance().setDatabaseSettings(props.getProperty("databaseUser"),
-				props.getProperty("databasePass"), props.getProperty("databaseHost"), 
-				props.getProperty("databaseName"));
+				props.getProperty("databasePass"), props.getProperty("databaseHost"),
+				props.getProperty("databaseName"), props.getProperty("databasePort"));
 		
 		Database.getInstance().connect();
 		

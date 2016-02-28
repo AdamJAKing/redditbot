@@ -16,6 +16,7 @@ public class Database {
 	private String user;
 	private String password;
 	private String host;
+	private String port;
 	private String database;
 	private boolean settingsSet = false;
 	
@@ -33,12 +34,14 @@ public class Database {
 	 * @param password SQL password
  	 * @param host SQL host
 	 * @param database SQL database
+	 * @param port SQL port
 	 */
-	public void setDatabaseSettings(String user, String password, String host, String database){
+	public void setDatabaseSettings(String user, String password, String host, String database, String port){
 		this.user = user;
 		this.password = password;
 		this.host = host;
 		this.database = database;
+		this.port = port;
 		
 		settingsSet = true;
 	}
@@ -51,7 +54,7 @@ public class Database {
 		if(settingsSet){
 			System.out.println("Attempting to connect to database...");
 			try {
-				DriverManager.getConnection("jdbc:mysql://"+host+":3306/"+database, user, password);
+				DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database, user, password);
 				System.out.println("Connected!");
 			} catch (SQLException e) {
 				System.out.println("Failed to connect to database!");
