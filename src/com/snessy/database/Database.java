@@ -1,5 +1,6 @@
 package com.snessy.database;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -19,6 +20,8 @@ public class Database {
 	private String port;
 	private String database;
 	private boolean settingsSet = false;
+
+	private Connection connection;
 	
 	private Database() {
 		
@@ -46,6 +49,12 @@ public class Database {
 		settingsSet = true;
 	}
 	
+	
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
 	/**
 	 * Checks if the database settings are set and if so, attempts to connect to the database
 	 */
@@ -54,7 +63,7 @@ public class Database {
 		if(settingsSet){
 			System.out.println("Attempting to connect to database...");
 			try {
-				DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database, user, password);
+				connection = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database, user, password);
 				System.out.println("Connected!");
 			} catch (SQLException e) {
 				System.out.println("Failed to connect to database!");
