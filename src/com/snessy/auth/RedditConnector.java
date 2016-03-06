@@ -13,7 +13,7 @@ import com.snessy.parse.RedditJsonParser;
 
 public class RedditConnector {
 	
-	public static final String USER_AGENT = "Snessabot-redditbotv1.0 by /u/Ihuntbacon";
+	public static final String USER_AGENT = "SubredditWeatherBot-v1.0 by /u/Ihuntbacon";
 	
 	private String username;
 	private String password;
@@ -69,4 +69,10 @@ public class RedditConnector {
 			System.out.println("Failed to connect to reddit\n" + response.getStatusLine());
 		}
 	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+	
+	
 }
