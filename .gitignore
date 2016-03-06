@@ -8,3 +8,4 @@ config.properties
 
 # Java class files
 *.class
+/bin/
