@@ -50,12 +50,15 @@ public class HttpHandler {
 		
 		HttpPost post = new HttpPost(url);
 		
-		for(Map.Entry<String, String> entry : headers.entrySet()) {
+		if(headers != null)
+			for(Map.Entry<String, String> entry : headers.entrySet()) {
 			post.addHeader(entry.getKey(), entry.getValue());
 		}
 		
-		for(Map.Entry<String, String> entry : nameValuePairs.entrySet()) {
-			entityPairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+		if(nameValuePairs != null) {
+			for(Map.Entry<String, String> entry : nameValuePairs.entrySet()) {
+				entityPairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+			}
 		}
 		
 		CloseableHttpResponse response = null;
